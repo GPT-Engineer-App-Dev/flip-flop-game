@@ -6,8 +6,8 @@ import { FaPlus } from "react-icons/fa"; // example - use react-icons/fa for ico
 const Index = () => {
   // TODO: Create the website here!
   return (
-    <Button>
-      Hello world! <FaPlus />
+    <Button as="a" href="/othello" colorScheme="teal" leftIcon={<FaPlus />}>
+      Play Othello
     </Button>
   ); // example
 };
