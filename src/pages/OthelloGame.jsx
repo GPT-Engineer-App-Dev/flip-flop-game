@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { Box, Button, Grid, GridItem } from '@chakra-ui/react';
+import { Box, Grid, GridItem } from '@chakra-ui/react';
 
 const OthelloGame = () => {
   const [board, setBoard] = useState(Array(8).fill(Array(8).fill(null)));
 
   const handleCellClick = (row, col) => {
-    // Placeholder for game logic
-    console.log(`Cell clicked: ${row}, ${col}`);
+    setBoard(board.map((r, ri) => ri === row ? r.map((c, ci) => ci === col ? c === 'black' ? null : 'black' : c) : r));
   };
 
   return (
@@ -14,7 +13,7 @@ const OthelloGame = () => {
       <Grid templateColumns="repeat(8, 1fr)" gap={1}>
         {board.map((row, rowIndex) =>
           row.map((cell, colIndex) => (
-            <GridItem w="40px" h="40px" bg="green.500" key={`${rowIndex}-${colIndex}`} onClick={() => handleCellClick(rowIndex, colIndex)} />
+            <GridItem w="40px" h="40px" bg={cell ? 'black' : 'green.500'} key={`${rowIndex}-${colIndex}`} onClick={() => handleCellClick(rowIndex, colIndex)} />
           ))
         )}
       </Grid>
